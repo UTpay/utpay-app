@@ -122,6 +122,7 @@ export default {
     async handleSignUp () {
       const url = `${serverName}/api/v1/register/`
       if (this.password1 !== this.password2) {
+        this.$ons.notification.alert('同じパスワードを入力してください')
         return Promise.reject(new Error('同じパスワードを入力してください。'))
       }
       const res = await axios.post(url, {
@@ -130,6 +131,7 @@ export default {
         password: this.password1
       })
       .catch(e => {
+        this.$ons.notification.alert('エラーが発生しました。')
         return Promise.reject(new Error(e))
       })
       console.log('User:', res.data)
@@ -142,6 +144,7 @@ export default {
         password: this.password
       })
       .catch(e => {
+        this.$ons.notification.alert('エラーが発生しました。')
         return Promise.reject(new Error(e))
       })
       console.log('token:', res.data.token)
