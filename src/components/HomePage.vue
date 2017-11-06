@@ -21,8 +21,14 @@
 
     <v-ons-list-title>API Endpoints</v-ons-list-title>
     <v-ons-list>
-      <v-ons-list-item v-for="item in endpoints" :key="item.url" @click="$ons.notification.toast({message: `${item.method} ${item.url}`, timeout: 2000})">
-        <div class="center">{{ item.label }}</div>
+      <v-ons-list-item @click="getUser()">
+        <div class="center">ユーザ取得</div>
+      </v-ons-list-item>
+      <v-ons-list-item @click="getEthAccounts()">
+        <div class="center">Ethereum アカウント取得</div>
+      </v-ons-list-item>
+      <v-ons-list-item @click="getTransactions()">
+        <div class="center">トランザクション取得</div>
       </v-ons-list-item>
     </v-ons-list>
 
@@ -32,7 +38,7 @@
         <v-ons-list-header>username</v-ons-list-header>
         <v-ons-list-item>
           <div class="center">
-            <v-ons-input placeholder="username" float v-model="name"></v-ons-input>
+            <v-ons-input placeholder="username" float v-model="username"></v-ons-input>
           </div>
         </v-ons-list-item>
 
@@ -59,7 +65,7 @@
       </v-ons-list>
 
       <div class="center" style="padding: 6px">
-        <v-ons-button modifier="large" @click="signUpDialogVisible = false">Sign up</v-ons-button>
+        <v-ons-button modifier="large" @click="handleSignUp()">Sign up</v-ons-button>
       </div>
     </v-ons-dialog>
 
@@ -69,7 +75,7 @@
         <v-ons-list-header>username</v-ons-list-header>
         <v-ons-list-item>
           <div class="center">
-            <v-ons-input placeholder="username" float v-model="name"></v-ons-input>
+            <v-ons-input placeholder="username" float v-model="username"></v-ons-input>
           </div>
         </v-ons-list-item>
 
@@ -82,7 +88,9 @@
       </v-ons-list>
 
       <div class="center" style="padding: 6px">
-        <v-ons-button modifier="large" @click="loginDialogVisible = false">Login</v-ons-button>
+        <v-ons-button modifier="large" @click="handleLogin()">
+          Login
+        </v-ons-button>
       </div>
     </v-ons-dialog>
 
@@ -90,49 +98,19 @@
 </template>
 
 <script>
+import axios from 'axios'
 const serverName = 'http://192.168.10.5:8000'
 export default {
   name: 'home',
   data () {
     return {
       msg: 'UTpay',
-      endpoints: [
-        {
-          label: 'トークン発行',
-          url: `${serverName}/api/v1/token-auth/`,
-          method: 'POST'
-        },
-        {
-          label: 'トークンリフレッシュ',
-          url: `${serverName}/api/v1/token-refresh/`,
-          method: 'POST'
-        },
-        {
-          label: 'トークン検証',
-          url: `${serverName}/api/v1/token-verify/`,
-          method: 'POST'
-        },
-        {
-          label: 'ユーザ取得',
-          url: `${serverName}/api/v1/users/`,
-          method: 'GET'
-        },
-        {
-          label: 'Ethereum アカウント取得',
-          url: `${serverName}/api/v1/eth_accounts/`,
-          method: 'GET'
-        },
-        {
-          label: 'トランザクション取得',
-          url: `${serverName}/api/v1/transactions/`,
-          method: 'GET'
-        },
-        {
-          label: 'UTCoin 送金',
-          url: `${serverName}/api/v1/transactions/transfer/`,
-          method: 'POST'
-        }
-      ],
+      username: '',
+      email: '',
+      password: '',
+      password1: '',
+      password2: '',
+      token: '',
       signUpDialogVisible: false,
       loginDialogVisible: false
     }
@@ -140,6 +118,53 @@ export default {
   methods: {
     goTo (url) {
       window.open(url, '_blank')
+    },
+    async handleSignUp () {
+      const url = `${serverName}/api/v1/register/`
+      if (this.password1 !== this.password2) {
+        return Promise.reject(new Error('同じパスワードを入力してください。'))
+      }
+      const res = await axios.post(url, {
+        username: this.username,
+        email: this.email,
+        password: this.password1
+      })
+      .catch(e => {
+        return Promise.reject(new Error(e))
+      })
+      console.log('User:', res.data)
+      this.signUpDialogVisible = false
+    },
+    async handleLogin () {
+      const url = `${serverName}/api/v1/token-auth/`
+      const res = await axios.post(url, {
+        username: this.username,
+        password: this.password
+      })
+      .catch(e => {
+        return Promise.reject(new Error(e))
+      })
+      console.log('token:', res.data.token)
+      this.token = res.data.token
+      this.loginDialogVisible = false
+    },
+    async getUser () {
+      const url = `${serverName}/api/v1/users/`
+      const res = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
+      .catch(e => Promise.reject(new Error(e)))
+      console.log('User:', res.data.results[0])
+    },
+    async getEthAccounts () {
+      const url = `${serverName}/api/v1/eth_accounts/`
+      const res = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
+      .catch(e => Promise.reject(new Error(e)))
+      console.log('Eth Accounts:', res.data.results)
+    },
+    async getTransactions () {
+      const url = `${serverName}/api/v1/transactions/`
+      const res = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
+      .catch(e => Promise.reject(new Error(e)))
+      console.log('Transactions:', res.data.results)
     }
   }
 }
