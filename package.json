@@ -16,6 +16,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "axios": "^0.17.0",
     "cordova-android": "^6.3.0",
     "cordova-browser": "^5.0.1",
     "cordova-ios": "^4.5.3",
