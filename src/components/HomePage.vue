@@ -13,69 +13,128 @@
       <img src="../assets/logo.png">
     </div>
 
-    <v-ons-list-title>Vue.js Essential Links</v-ons-list-title>
+    <div class="login-area" style="margin: 10px 10px 30px 10px">
+      <v-ons-button modifier="large" style="margin: 5px 0" @click="signUpDialogVisible = true">Sign up</v-ons-button>
+      <p style="text-align: center">or</p>
+      <v-ons-button modifier="large" style="margin: 5px 0" @click="loginDialogVisible = true">Login</v-ons-button>
+    </div>
+
+    <v-ons-list-title>API Endpoints</v-ons-list-title>
     <v-ons-list>
-      <v-ons-list-item v-for="item in essentialLinks" @click="goTo(item.link)" :key="item.link">
-        <div class="left"><v-ons-icon fixed-width :icon="item.icon"></v-ons-icon></div>
+      <v-ons-list-item v-for="item in endpoints" :key="item.url" @click="$ons.notification.toast({message: `${item.method} ${item.url}`, timeout: 2000})">
         <div class="center">{{ item.label }}</div>
-        <div class="right"><v-ons-icon icon="fa-external-link"></v-ons-icon></div>
       </v-ons-list-item>
     </v-ons-list>
 
-    <v-ons-list-title>Vue.js Ecosystem</v-ons-list-title>
-    <v-ons-row>
-      <v-ons-col>
-        <v-ons-card @click="goTo('http://router.vuejs.org/')">vue-router</v-ons-card>
-      </v-ons-col>
-      <v-ons-col>
-        <v-ons-card @click="goTo('http://vuex.vuejs.org/')">vuex</v-ons-card>
-      </v-ons-col>
-    </v-ons-row>
-    <v-ons-row>
-      <v-ons-col>
-        <v-ons-card @click="goTo('http://vue-loader.vuejs.org/')">vue-loader</v-ons-card>
-      </v-ons-col>
-      <v-ons-col>
-        <v-ons-card @click="goTo('https://github.com/vuejs/awesome-vue')">awesome-vue</v-ons-card>
-      </v-ons-col>
-    </v-ons-row>
+    <v-ons-dialog cancelable :visible.sync="signUpDialogVisible">
+      <p style="text-align: center">Sign Up</p>
+      <v-ons-list>
+        <v-ons-list-header>username</v-ons-list-header>
+        <v-ons-list-item>
+          <div class="center">
+            <v-ons-input placeholder="username" float v-model="name"></v-ons-input>
+          </div>
+        </v-ons-list-item>
+
+        <v-ons-list-header>email</v-ons-list-header>
+        <v-ons-list-item>
+          <div class="center">
+            <v-ons-input placeholder="example@example.com" float v-model="email"></v-ons-input>
+          </div>
+        </v-ons-list-item>
+
+        <v-ons-list-header>password</v-ons-list-header>
+        <v-ons-list-item>
+          <div class="center">
+            <v-ons-input placeholder="password" float v-model="password1"></v-ons-input>
+          </div>
+        </v-ons-list-item>
+
+        <v-ons-list-header>password (again)</v-ons-list-header>
+        <v-ons-list-item>
+          <div class="center">
+            <v-ons-input placeholder="password" float v-model="password2"></v-ons-input>
+          </div>
+        </v-ons-list-item>
+      </v-ons-list>
+
+      <div class="center" style="padding: 6px">
+        <v-ons-button modifier="large" @click="signUpDialogVisible = false">Sign up</v-ons-button>
+      </div>
+    </v-ons-dialog>
+
+    <v-ons-dialog cancelable :visible.sync="loginDialogVisible">
+      <p style="text-align: center">Login</p>
+      <v-ons-list>
+        <v-ons-list-header>username</v-ons-list-header>
+        <v-ons-list-item>
+          <div class="center">
+            <v-ons-input placeholder="username" float v-model="name"></v-ons-input>
+          </div>
+        </v-ons-list-item>
+
+        <v-ons-list-header>password</v-ons-list-header>
+        <v-ons-list-item>
+          <div class="center">
+            <v-ons-input placeholder="password" float v-model="password"></v-ons-input>
+          </div>
+        </v-ons-list-item>
+      </v-ons-list>
+
+      <div class="center" style="padding: 6px">
+        <v-ons-button modifier="large" @click="loginDialogVisible = false">Login</v-ons-button>
+      </div>
+    </v-ons-dialog>
 
   </v-ons-page>
 </template>
 
 <script>
+const serverName = 'http://192.168.10.5:8000'
 export default {
   name: 'home',
   data () {
     return {
-      msg: 'Welcome',
-      essentialLinks: [
+      msg: 'UTpay',
+      endpoints: [
         {
-          label: 'Core Docs',
-          link: 'https://vuejs.org',
-          icon: 'fa-book'
+          label: 'トークン発行',
+          url: `${serverName}/api/v1/token-auth/`,
+          method: 'POST'
         },
         {
-          label: 'Community Chat',
-          link: 'https://chat.vuejs.org',
-          icon: 'fa-commenting'
+          label: 'トークンリフレッシュ',
+          url: `${serverName}/api/v1/token-refresh/`,
+          method: 'POST'
         },
         {
-          label: 'Forum',
-          link: 'https://forum.vuejs.org',
-          icon: 'ion-chatboxes'
+          label: 'トークン検証',
+          url: `${serverName}/api/v1/token-verify/`,
+          method: 'POST'
         },
         {
-          label: 'Twitter',
-          link: 'https://twitter.com/vuejs',
-          icon: 'fa-twitter'
+          label: 'ユーザ取得',
+          url: `${serverName}/api/v1/users/`,
+          method: 'GET'
         },
         {
-          label: 'Docs for this template',
-          link: 'http://vuejs-templates.github.io/webpack/',
-          icon: 'fa-file-text'
+          label: 'Ethereum アカウント取得',
+          url: `${serverName}/api/v1/eth_accounts/`,
+          method: 'GET'
+        },
+        {
+          label: 'トランザクション取得',
+          url: `${serverName}/api/v1/transactions/`,
+          method: 'GET'
+        },
+        {
+          label: 'UTCoin 送金',
+          url: `${serverName}/api/v1/transactions/transfer/`,
+          method: 'POST'
         }
-      ]
+      ],
+      signUpDialogVisible: false,
+      loginDialogVisible: false
     }
   },
   methods: {
