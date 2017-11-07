@@ -1,12 +1,10 @@
 <template>
   <v-ons-page>
-    <v-ons-toolbar class="home-toolbar">
+    <v-ons-toolbar>
       <div class="left">
-        <v-ons-toolbar-button @click="$store.commit('splitter/toggle')">
-          <v-ons-icon icon="ion-navicon, material:md-menu"></v-ons-icon>
-        </v-ons-toolbar-button>
+        <v-ons-back-button>Back</v-ons-back-button>
       </div>
-      <div class="center">{{ msg }}</div>
+      <div class="center">{{$options.name}}</div>
     </v-ons-toolbar>
 
     <div class="header">
@@ -101,11 +99,10 @@
 import axios from 'axios'
 import { serverName } from '../config.js'
 export default {
-  name: 'home',
+  name: 'UTpay',
 
   data () {
     return {
-      msg: 'UTpay',
       username: '',
       email: '',
       password: '',
@@ -154,6 +151,7 @@ export default {
       console.log('token:', res.data.token)
       this.token = res.data.token
       this.loginDialogVisible = false
+      this.$router.push({ name: 'MyPage', params: { token: this.token } })
     },
 
     async getUser () {
