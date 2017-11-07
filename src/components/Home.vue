@@ -17,19 +17,6 @@
       <v-ons-button modifier="large" style="margin: 5px 0" @click="loginDialogVisible = true">Login</v-ons-button>
     </div>
 
-    <v-ons-list-title>API Endpoints</v-ons-list-title>
-    <v-ons-list>
-      <v-ons-list-item @click="getUser()">
-        <div class="center">ユーザ取得</div>
-      </v-ons-list-item>
-      <v-ons-list-item @click="getEthAccounts()">
-        <div class="center">Ethereum アカウント取得</div>
-      </v-ons-list-item>
-      <v-ons-list-item @click="getTransactions()">
-        <div class="center">トランザクション取得</div>
-      </v-ons-list-item>
-    </v-ons-list>
-
     <v-ons-dialog cancelable :visible.sync="signUpDialogVisible">
       <p style="text-align: center">Sign Up</p>
       <v-ons-list>
@@ -108,7 +95,6 @@ export default {
       password: '',
       password1: '',
       password2: '',
-      token: '',
       signUpDialogVisible: false,
       loginDialogVisible: false
     }
@@ -149,30 +135,8 @@ export default {
         return Promise.reject(new Error(e))
       })
       console.log('token:', res.data.token)
-      this.token = res.data.token
       this.loginDialogVisible = false
-      this.$router.push({ name: 'MyPage', params: { token: this.token } })
-    },
-
-    async getUser () {
-      const url = `${serverName}/api/v1/users/`
-      const res = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
-      .catch(e => Promise.reject(new Error(e)))
-      console.log('User:', res.data.results[0])
-    },
-
-    async getEthAccounts () {
-      const url = `${serverName}/api/v1/eth_accounts/`
-      const res = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
-      .catch(e => Promise.reject(new Error(e)))
-      console.log('Eth Accounts:', res.data.results)
-    },
-
-    async getTransactions () {
-      const url = `${serverName}/api/v1/transactions/`
-      const res = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
-      .catch(e => Promise.reject(new Error(e)))
-      console.log('Transactions:', res.data.results)
+      this.$router.push({ name: 'MyPage', params: { token: res.data.token } })
     }
   }
 }
