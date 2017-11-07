@@ -99,7 +99,7 @@
 
 <script>
 import axios from 'axios'
-const serverName = 'http://192.168.10.5:8000'
+import { serverName } from '../config.js'
 export default {
   name: 'home',
   data () {
