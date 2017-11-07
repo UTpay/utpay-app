@@ -102,6 +102,7 @@ import axios from 'axios'
 import { serverName } from '../config.js'
 export default {
   name: 'home',
+
   data () {
     return {
       msg: 'UTpay',
@@ -115,10 +116,12 @@ export default {
       loginDialogVisible: false
     }
   },
+
   methods: {
     goTo (url) {
       window.open(url, '_blank')
     },
+
     async handleSignUp () {
       const url = `${serverName}/api/v1/register/`
       if (this.password1 !== this.password2) {
@@ -137,6 +140,7 @@ export default {
       console.log('User:', res.data)
       this.signUpDialogVisible = false
     },
+
     async handleLogin () {
       const url = `${serverName}/api/v1/token-auth/`
       const res = await axios.post(url, {
@@ -151,18 +155,21 @@ export default {
       this.token = res.data.token
       this.loginDialogVisible = false
     },
+
     async getUser () {
       const url = `${serverName}/api/v1/users/`
       const res = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
       .catch(e => Promise.reject(new Error(e)))
       console.log('User:', res.data.results[0])
     },
+
     async getEthAccounts () {
       const url = `${serverName}/api/v1/eth_accounts/`
       const res = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
       .catch(e => Promise.reject(new Error(e)))
       console.log('Eth Accounts:', res.data.results)
     },
+
     async getTransactions () {
       const url = `${serverName}/api/v1/transactions/`
       const res = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
