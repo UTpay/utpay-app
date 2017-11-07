@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import HomePage from './components/HomePage'
+import Home from './components/Home'
 import MyPage from './components/MyPage'
 
 Vue.use(VueRouter)
@@ -11,7 +11,7 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'Home',
-      component: HomePage,
+      component: Home,
       children: [
         {
           path: 'mypage',
