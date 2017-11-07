@@ -1,45 +1,43 @@
 <template>
-  <v-ons-page id="app">
-    <v-ons-splitter>
-      <v-ons-splitter-side swipeable collapse width="250px"
-        :animation="$ons.platform.isAndroid() ? 'overlay' : 'reveal'"
-        :open.sync="menuIsOpen">
-        <menu-page></menu-page>
-      </v-ons-splitter-side>
-
-      <v-ons-splitter-content>
-        <home-page></home-page>
-      </v-ons-splitter-content>
-    </v-ons-splitter>
-  </v-ons-page>
+  <div id="app">
+    <v-ons-navigator swipeable swipe-target-width="200px"
+      :page-stack="pageStack"
+      :pop-page="goBack"
+    ></v-ons-navigator>
+  </div>
 </template>
 
 <script>
-import HomePage from './components/HomePage'
-import MenuPage from './components/MenuPage'
-
 export default {
   name: 'app',
-  computed: {
-    menuIsOpen: {
-      get () {
-        return this.$store.state.splitter.open
-      },
-      set (newValue) {
-        this.$store.commit('splitter/toggle', newValue)
-      }
+
+  data () {
+    return {
+      pageStack: []
     }
   },
-  components: {
-    HomePage,
-    MenuPage
+
+  methods: {
+    goBack () {
+      // Go to the parent route component
+      this.$router.push({ name: this.$route.matched[this.$route.matched.length - 2].name })
+    }
+  },
+
+  created () {
+    /* Define how routes should be mapped to the page stack.
+     * This assumes all the routes contain VOnsPage components
+     * and are provided in the 'default' view.
+     * For nested named routes or routes that for some reason
+     * should not be mapped in VOnsNavigator, filter them out here.
+     */
+    const mapRouteStack = route => (this.pageStack = route.matched.map(m => m.components.default))
+    /* Set initial pageStack depending on current
+     * route instead of always pushing 'Home' page
+     */
+    mapRouteStack(this.$route)
+    /* On route change, reset the pageStack to the next route */
+    this.$router.beforeEach((to, from, next) => mapRouteStack(to) && next())
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-ons-splitter-side[side=left][animation=overlay] {
-  border-right: 1px solid #BBB;
-}
-</style>
