@@ -7,6 +7,12 @@
       <div class="center">{{$options.name}}</div>
     </v-ons-toolbar>
 
+    <div class="center" style="padding: 6px">
+      <v-ons-button modifier="large" @click="$router.push('Transfer')">
+        UTCoin 送金
+      </v-ons-button>
+    </div>
+
     <v-ons-list-title>API Endpoints</v-ons-list-title>
     <v-ons-list>
       <v-ons-list-item @click="getUser()">
@@ -26,6 +32,7 @@
 <script>
 import axios from 'axios'
 import { serverName } from '../config.js'
+
 export default {
   name: 'MyPage',
 

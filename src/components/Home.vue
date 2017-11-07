@@ -85,6 +85,7 @@
 <script>
 import axios from 'axios'
 import { serverName } from '../config.js'
+
 export default {
   name: 'UTpay',
 
