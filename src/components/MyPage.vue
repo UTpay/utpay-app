@@ -4,7 +4,7 @@
       <div class="left">
         <v-ons-back-button>Back</v-ons-back-button>
       </div>
-      <div class="center">マイページ</div>
+      <div class="center">{{ $options.title }}</div>
     </v-ons-toolbar>
 
     <v-ons-list-title>API Endpoints</v-ons-list-title>
@@ -35,6 +35,7 @@ import { serverName } from '../config.js'
 
 export default {
   name: 'MyPage',
+  title: 'マイページ',
 
   data () {
     return {

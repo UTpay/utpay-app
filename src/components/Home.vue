@@ -4,7 +4,7 @@
       <div class="left">
         <v-ons-back-button>Back</v-ons-back-button>
       </div>
-      <div class="center">{{$options.name}}</div>
+      <div class="center">{{ $options.title }}</div>
     </v-ons-toolbar>
 
     <div class="header">
@@ -87,7 +87,8 @@ import axios from 'axios'
 import { serverName } from '../config.js'
 
 export default {
-  name: 'UTpay',
+  name: 'Home',
+  title: 'UTpay',
 
   data () {
     return {
