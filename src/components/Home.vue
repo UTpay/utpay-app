@@ -25,7 +25,7 @@ export default {
       tabs: [
         {
           page: Debug,
-          label: 'Debug'
+          label: 'デバッグ'
         },
         {
           page: Transfer,
