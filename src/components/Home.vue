@@ -12,9 +12,9 @@
     </div>
 
     <div class="login-area" style="margin: 10px 10px 30px 10px">
-      <v-ons-button modifier="large" style="margin: 5px 0" @click="signUpDialogVisible = true">Sign up</v-ons-button>
+      <v-ons-button modifier="large" style="margin: 10px 0" @click="signUpDialogVisible = true">Sign up</v-ons-button>
       <p style="text-align: center">or</p>
-      <v-ons-button modifier="large" style="margin: 5px 0" @click="loginDialogVisible = true">Login</v-ons-button>
+      <v-ons-button modifier="large" style="margin: 10px 0" @click="loginDialogVisible = true">Login</v-ons-button>
     </div>
 
     <v-ons-dialog cancelable :visible.sync="signUpDialogVisible">
@@ -23,28 +23,28 @@
         <v-ons-list-header>username</v-ons-list-header>
         <v-ons-list-item>
           <div class="center">
-            <v-ons-input placeholder="username" float v-model="username"></v-ons-input>
+            <v-ons-input type="text" placeholder="username" float v-model="username"></v-ons-input>
           </div>
         </v-ons-list-item>
 
         <v-ons-list-header>email</v-ons-list-header>
         <v-ons-list-item>
           <div class="center">
-            <v-ons-input placeholder="example@example.com" float v-model="email"></v-ons-input>
+            <v-ons-input type="email" placeholder="example@example.com" float v-model="email"></v-ons-input>
           </div>
         </v-ons-list-item>
 
         <v-ons-list-header>password</v-ons-list-header>
         <v-ons-list-item>
           <div class="center">
-            <v-ons-input placeholder="password" float v-model="password1"></v-ons-input>
+            <v-ons-input type="password" placeholder="password" float v-model="password1"></v-ons-input>
           </div>
         </v-ons-list-item>
 
         <v-ons-list-header>password (again)</v-ons-list-header>
         <v-ons-list-item>
           <div class="center">
-            <v-ons-input placeholder="password" float v-model="password2"></v-ons-input>
+            <v-ons-input type="password" placeholder="password" float v-model="password2"></v-ons-input>
           </div>
         </v-ons-list-item>
       </v-ons-list>
@@ -60,14 +60,14 @@
         <v-ons-list-header>username</v-ons-list-header>
         <v-ons-list-item>
           <div class="center">
-            <v-ons-input placeholder="username" float v-model="username"></v-ons-input>
+            <v-ons-input type="text" placeholder="username" float v-model="username"></v-ons-input>
           </div>
         </v-ons-list-item>
 
         <v-ons-list-header>password</v-ons-list-header>
         <v-ons-list-item>
           <div class="center">
-            <v-ons-input placeholder="password" float v-model="password"></v-ons-input>
+            <v-ons-input type="password" placeholder="password" float v-model="password"></v-ons-input>
           </div>
         </v-ons-list-item>
       </v-ons-list>
@@ -102,10 +102,6 @@ export default {
   },
 
   methods: {
-    goTo (url) {
-      window.open(url, '_blank')
-    },
-
     async handleSignUp () {
       const url = `${serverName}/api/v1/register/`
       if (this.password1 !== this.password2) {
@@ -117,10 +113,13 @@ export default {
         email: this.email,
         password: this.password1
       })
-      .catch(e => {
-        this.$ons.notification.alert('エラーが発生しました。')
-        return Promise.reject(new Error(e))
-      })
+        .catch(e => {
+          this.$ons.notification.alert({
+            title: 'Sign up',
+            message: 'エラーが発生しました。'
+          })
+          return Promise.reject(new Error(e))
+        })
       console.log('User:', res.data)
       this.signUpDialogVisible = false
     },
@@ -131,10 +130,13 @@ export default {
         username: this.username,
         password: this.password
       })
-      .catch(e => {
-        this.$ons.notification.alert('エラーが発生しました。')
-        return Promise.reject(new Error(e))
-      })
+        .catch(e => {
+          this.$ons.notification.alert({
+            title: 'Login',
+            message: 'username または password が間違っています。'
+          })
+          return Promise.reject(new Error(e))
+        })
       console.log('token:', res.data.token)
       this.loginDialogVisible = false
       this.$router.push({ name: 'MyPage', params: { token: res.data.token } })
