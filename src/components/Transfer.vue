@@ -4,7 +4,7 @@
       <v-ons-list-header>宛先</v-ons-list-header>
       <v-ons-list-item>
         <div class="center">
-          <v-ons-input type="text" placeholder="0x..." float v-model="address"></v-ons-input>
+          <v-ons-input class="address-input" type="text" placeholder="0x..." float v-model="address"></v-ons-input>
         </div>
       </v-ons-list-item>
 
@@ -111,3 +111,8 @@ export default {
 }
 </script>
 
+<style scoped>
+  .address-input {
+    width: 20em;
+  }
+</style>
