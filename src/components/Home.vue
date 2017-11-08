@@ -140,7 +140,7 @@ export default {
         })
       console.log('token:', res.data.token)
       this.loginDialogVisible = false
-      this.$router.push({ name: 'MyPage', params: { token: res.data.token } })
+      this.$router.push({ name: 'Home2', params: { token: res.data.token } })
     }
   }
 }
@@ -148,6 +148,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.toolbar--material__center {
+  text-align: center;
+  margin-right: 56px;
+}
+
 .header {
   text-align: center;
 }

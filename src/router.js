@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Home from './components/Home'
+import Home2 from './components/Home2'
 import MyPage from './components/MyPage'
 import Transfer from './components/Transfer'
 
@@ -14,6 +15,11 @@ const router = new VueRouter({
       name: 'Home',
       component: Home,
       children: [
+        {
+          path: 'home',
+          name: 'Home2',
+          component: Home2
+        },
         {
           path: 'mypage',
           name: 'MyPage',

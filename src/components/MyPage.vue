@@ -1,12 +1,5 @@
 <template>
   <v-ons-page>
-    <v-ons-toolbar>
-      <div class="left">
-        <v-ons-back-button>Back</v-ons-back-button>
-      </div>
-      <div class="center">{{ $options.title }}</div>
-    </v-ons-toolbar>
-
     <v-ons-list-title>API Endpoints</v-ons-list-title>
     <v-ons-list>
       <v-ons-list-item @click="getUser()">
@@ -19,13 +12,6 @@
         <div class="center">トランザクション取得</div>
       </v-ons-list-item>
     </v-ons-list>
-    
-    <div class="center" style="padding: 10px">
-      <v-ons-button modifier="large" @click="$router.push({ name: 'Transfer', params: { token: token } })">
-        UTCoin 送金
-      </v-ons-button>
-    </div>
-
   </v-ons-page>
 </template>
 
@@ -35,7 +21,6 @@ import { serverName } from '../config.js'
 
 export default {
   name: 'MyPage',
-  title: 'マイページ',
 
   data () {
     return {

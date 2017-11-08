@@ -1,12 +1,5 @@
 <template>
   <v-ons-page>
-    <v-ons-toolbar>
-      <div class="left">
-        <v-ons-back-button>Back</v-ons-back-button>
-      </div>
-      <div class="center">{{ $options.title }}</div>
-    </v-ons-toolbar>
-
     <v-ons-list>
       <v-ons-list-header>宛先</v-ons-list-header>
       <v-ons-list-item>
@@ -47,7 +40,6 @@ import { serverName } from '../config.js'
 
 export default {
   name: 'Transfer',
-  title: 'UTCoin 送金',
 
   data () {
     return {
