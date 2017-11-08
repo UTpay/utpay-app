@@ -2,7 +2,7 @@
 <widget id="org.utpay.utpay" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>UTpay</name>
     <description>
-      Client application of UTpay
+      Mobile client app of UTpay
     </description>
     <author email="info@minami.xyz" href="https://github.com/m1nam1">
         m1nam1

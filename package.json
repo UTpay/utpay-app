@@ -1,7 +1,7 @@
 {
   "name": "utpay-app",
   "version": "1.0.0",
-  "description": "Client application of UTpay",
+  "description": "Mobile client app of UTpay",
   "author": "m1nam1 <info@minami.xyz>",
   "license": "MIT",
   "private": true,
