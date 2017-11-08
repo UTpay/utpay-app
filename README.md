@@ -1,6 +1,6 @@
 # utpay-app
 
-> Client application of UTpay
+Mobile client app of UTpay
 
 ## Build Setup
 
