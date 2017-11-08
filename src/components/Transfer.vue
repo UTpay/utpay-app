@@ -55,21 +55,29 @@ export default {
         cordova.plugins.barcodeScanner.scan(result => { // eslint-disable-line
           if (result.cancelled) return
 
-          console.log('text:', result.text)
           if (result.text.indexOf('0x') === 0) {
             this.address = result.text
           } else {
-            this.$ons.notification.alert('アドレスではありません。')
+            this.$ons.notification.alert({
+              title: 'エラー',
+              message: '有効なアドレス形式ではありません。'
+            })
           }
         }, err => {
           console.error(err)
-          this.$ons.notification.alert('エラーが発生しました。')
+          this.$ons.notification.alert({
+            title: 'エラー',
+            message: 'エラーが発生しました。'
+          })
         })
       }, false)
     },
 
     async transfer () {
-      const isConfirmed = await this.$ons.notification.confirm('送金を確定しますか？')
+      const isConfirmed = await this.$ons.notification.confirm({
+        title: '確認',
+        message: '送金を確定しますか？'
+      })
       if (isConfirmed) {
         const url = `${serverName}/api/v1/transactions/transfer/`
         let params = new URLSearchParams()
@@ -78,14 +86,25 @@ export default {
         const headers = { 'Authorization': `JWT ${this.token}` }
         const response = await axios.post(url, params, { headers })
           .catch(e => {
-            this.$ons.notification.alert('エラーが発生しました。')
+            this.$ons.notification.alert({
+              title: 'エラー',
+              message: 'エラーが発生しました。'
+            })
             return Promise.reject(new Error(e))
           })
+
         console.log('response:', response.data)
-        this.$ons.notification.alert({
-          title: '送金完了',
-          messageHTML: `<p>正常に送金されました！</p><p>トランザクションの確認に時間がかかる場合があります。</p>`
-        })
+        if (response.data.success) {
+          this.$ons.notification.alert({
+            title: '送金完了',
+            messageHTML: `<p>正常に送金されました！</p><p>トランザクションの確認に時間がかかる場合があります。</p>`
+          })
+        } else {
+          this.$ons.notification.alert({
+            title: 'エラー',
+            message: response.data.detail
+          })
+        }
       }
     }
   }
