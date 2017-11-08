@@ -7,12 +7,6 @@
       <div class="center">{{$options.name}}</div>
     </v-ons-toolbar>
 
-    <div class="center" style="padding: 6px">
-      <v-ons-button modifier="large" @click="$router.push('Transfer')">
-        UTCoin 送金
-      </v-ons-button>
-    </div>
-
     <v-ons-list-title>API Endpoints</v-ons-list-title>
     <v-ons-list>
       <v-ons-list-item @click="getUser()">
@@ -25,6 +19,12 @@
         <div class="center">トランザクション取得</div>
       </v-ons-list-item>
     </v-ons-list>
+    
+    <div class="center" style="padding: 10px">
+      <v-ons-button modifier="large" @click="$router.push({ name: 'Transfer', params: { token: token } })">
+        UTCoin 送金
+      </v-ons-button>
+    </div>
 
   </v-ons-page>
 </template>
