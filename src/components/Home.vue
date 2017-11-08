@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import MyPage from './MyPage.vue'
+import Debug from './Debug.vue'
 import Transfer from './Transfer.vue'
 
 export default {
@@ -24,8 +24,8 @@ export default {
       animationOptions: {},
       tabs: [
         {
-          page: MyPage,
-          label: 'マイページ'
+          page: Debug,
+          label: 'Debug'
         },
         {
           page: Transfer,

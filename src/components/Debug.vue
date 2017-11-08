@@ -20,7 +20,7 @@ import axios from 'axios'
 import { serverName } from '../config.js'
 
 export default {
-  name: 'MyPage',
+  name: 'Debug',
 
   data () {
     return {
