@@ -99,25 +99,3 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.header {
-  text-align: center;
-}
-
-img {
-  max-width: 300px;
-}
-
-ons-list-title:not(:first-of-type) {
-  margin-top: 30px;
-}
-
-ons-card {
-  text-align: center;
-}
-
-ons-list-item, ons-card {
-  cursor: pointer;
-}
-</style>

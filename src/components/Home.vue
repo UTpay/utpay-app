@@ -159,11 +159,7 @@ ons-list-title:not(:first-of-type) {
   margin-top: 30px;
 }
 
-ons-card {
-  text-align: center;
-}
-
-ons-list-item, ons-card {
+ons-list-item {
   cursor: pointer;
 }
 </style>

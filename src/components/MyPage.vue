@@ -4,7 +4,7 @@
       <div class="left">
         <v-ons-back-button>Back</v-ons-back-button>
       </div>
-      <div class="center">{{$options.name}}</div>
+      <div class="center">マイページ</div>
     </v-ons-toolbar>
 
     <v-ons-list-title>API Endpoints</v-ons-list-title>
@@ -67,25 +67,3 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.header {
-  text-align: center;
-}
-
-img {
-  max-width: 300px;
-}
-
-ons-list-title:not(:first-of-type) {
-  margin-top: 30px;
-}
-
-ons-card {
-  text-align: center;
-}
-
-ons-list-item, ons-card {
-  cursor: pointer;
-}
-</style>
