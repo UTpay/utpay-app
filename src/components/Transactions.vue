@@ -2,7 +2,7 @@
   <v-ons-page>
     <v-ons-list>
       <v-ons-list-header>取引履歴</v-ons-list-header>
-      <v-ons-list-item tappable v-for="(transaction, index) in transactions" :key="index" :class="{outgo: 1 == 1}">
+      <v-ons-list-item tappable v-for="(transaction, index) in transactions" :key="index" :class="{outgo: transaction.user.username == username, income: transaction.user.username != username}">
         [{{ transaction.created_at }}] {{ transaction.amount }} UTC
       </v-ons-list-item>
     </v-ons-list>
@@ -19,12 +19,22 @@ export default {
   data () {
     return {
       token: this.$route.params.token,
+      username: '',
       transactions: ''
     }
   },
 
   created () {
-    const url = `${serverName}/api/v1/transactions/?ordering=-id`
+    let url = `${serverName}/api/v1/users/`
+    axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
+      .then(response => {
+        const username = response.data.results[0].username
+        console.log('username:', username)
+        this.username = username
+      })
+      .catch(e => Promise.reject(new Error(e)))
+
+    url = `${serverName}/api/v1/transactions/?ordering=-id`
     axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
       .then(response => {
         const transactions = response.data.results
