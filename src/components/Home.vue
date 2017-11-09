@@ -17,6 +17,7 @@
 <script>
 import Debug from './Debug.vue'
 import Transfer from './Transfer.vue'
+import Transactions from './Transactions.vue'
 
 export default {
   data () {
@@ -30,6 +31,10 @@ export default {
         {
           page: Transfer,
           label: '送金'
+        },
+        {
+          page: Transactions,
+          label: '取引履歴'
         }
       ]
     }
