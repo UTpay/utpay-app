@@ -3,7 +3,7 @@
     <v-ons-list>
       <v-ons-list-header>取引履歴</v-ons-list-header>
       <v-ons-list-item tappable v-for="(transaction, index) in transactions" :key="index" :class="{outgo: transaction.user.username == username, income: transaction.user.username != username}">
-        [{{ transaction.created_at }}] {{ transaction.amount }} UTC
+        [{{ transaction.created_at }}] {{ transaction.amount / 1000 }} UTC
       </v-ons-list-item>
     </v-ons-list>
   </v-ons-page>
