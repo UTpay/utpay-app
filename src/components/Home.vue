@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Debug from './Debug.vue'
+import Account from './Account.vue'
 import Transfer from './Transfer.vue'
 import Transactions from './Transactions.vue'
 
@@ -25,8 +25,8 @@ export default {
       animationOptions: {},
       tabs: [
         {
-          page: Debug,
-          label: 'デバッグ'
+          page: Account,
+          label: 'アカウント'
         },
         {
           page: Transfer,
