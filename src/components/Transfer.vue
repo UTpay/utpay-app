@@ -1,6 +1,7 @@
 <template>
   <v-ons-page>
     <v-ons-list>
+      <v-ons-list-title>UTCoin</v-ons-list-title>
       <v-ons-list-header>宛先</v-ons-list-header>
       <v-ons-list-item>
         <div class="center">
