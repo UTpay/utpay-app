@@ -22,14 +22,14 @@
         </v-ons-list-item>
 
         <v-ons-list-header>From</v-ons-list-header>
-        <v-ons-list-item>
+        <v-ons-list-item @click="goTo(`https://ropsten.etherscan.io/address/${selectedTransaction.from_address}`)">
           <div class="center">
             {{ this.selectedTransaction.from_address }}
           </div>
         </v-ons-list-item>
 
         <v-ons-list-header>To</v-ons-list-header>
-        <v-ons-list-item>
+        <v-ons-list-item @click="goTo(`https://ropsten.etherscan.io/address/${selectedTransaction.to_address}`)">
           <div class="center">
             {{ this.selectedTransaction.to_address }}
           </div>
@@ -110,7 +110,7 @@ export default {
       console.log('selectedTransaction:', transaction)
       this.selectedTransaction = transaction
       this.selectedTransaction.amount /= 1000
-      this.selectedTransaction.tx_hash = this.selectedTransaction.tx_hash.substr(0, 39) + '...'
+      this.selectedTransaction.tx_hash = this.selectedTransaction.tx_hash
     },
     closeDetailDialog () {
       this.detailDialogVisible = false
