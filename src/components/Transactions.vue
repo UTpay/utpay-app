@@ -126,13 +126,4 @@ export default {
   .outgo {
     color: red;
   }
-  .dialog-container {
-    width: 50%;
-  }
-  .address {
-    width: 50%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 </style>
