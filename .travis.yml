@@ -8,5 +8,7 @@ before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
 install:
   - yarn
+before_script:
+  - echo "export const serverName = 'http://127.0.0.1:8000'" > src/config.js
 script:
   - yarn build
