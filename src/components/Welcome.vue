@@ -7,18 +7,20 @@
       <div class="center">{{ $options.title }}</div>
     </v-ons-toolbar>
 
-    <div class="header">
-      <img src="../assets/logo.png">
-    </div>
-
-    <div class="login-area" style="margin: 10px 10px 30px 10px">
-      <v-ons-button modifier="large" style="margin: 10px 0" @click="signUpDialogVisible = true">Sign up</v-ons-button>
-      <p style="text-align: center">or</p>
-      <v-ons-button modifier="large" style="margin: 10px 0" @click="loginDialogVisible = true">Login</v-ons-button>
-    </div>
+    <v-ons-row class="login-area">
+      <v-ons-col width="90%" class="login-btn">
+        <v-ons-button modifier="large" style="margin: 10px 0" @click="signUpDialogVisible = true">Sign up</v-ons-button>
+      </v-ons-col>
+      <v-ons-col width="100%">
+        <p style="text-align: center">or</p>
+      </v-ons-col>
+      <v-ons-col width="90%" class="login-btn">
+        <v-ons-button modifier="large" style="margin: 10px 0" @click="loginDialogVisible = true">Login</v-ons-button>
+      </v-ons-col>
+    </v-ons-row>
 
     <v-ons-dialog cancelable :visible.sync="signUpDialogVisible">
-      <p style="text-align: center">Sign Up</p>
+      <p class="dialog-title">Sign Up</p>
       <v-ons-list>
         <v-ons-list-header>username</v-ons-list-header>
         <v-ons-list-item>
@@ -55,7 +57,7 @@
     </v-ons-dialog>
 
     <v-ons-dialog cancelable :visible.sync="loginDialogVisible">
-      <p style="text-align: center">Login</p>
+      <p class="dialog-title">Login</p>
       <v-ons-list>
         <v-ons-list-header>username</v-ons-list-header>
         <v-ons-list-item>
@@ -156,12 +158,20 @@ export default {
   margin-right: 56px;
 }
 
-.header {
-  text-align: center;
+.login-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
 }
 
-img {
-  max-width: 300px;
+.login-btn {
+  margin: 0 auto;
+}
+
+.dialog-title {
+  color: #FFFFFF;
+  text-align: center;
 }
 
 ons-list-title:not(:first-of-type) {
