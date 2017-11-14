@@ -1666,11 +1666,7 @@ cordova-serve@^2.0.0:
     open "0.0.5"
     shelljs "^0.5.3"
 
-core-js@2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
-
-core-js@^2.2.0, core-js@^2.4.0, core-js@^2.5.0:
+core-js@^2.2.0, core-js@^2.4.0, core-js@^2.5.0, core-js@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
 
@@ -4535,12 +4531,12 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-onsenui@~2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/onsenui/-/onsenui-2.7.1.tgz#81b06b8e930791ffa0184e635440c480d8dc2a4a"
+onsenui@~2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/onsenui/-/onsenui-2.8.0.tgz#08f5b9abaa51098db88b86ad4c309eaefc11cc5a"
   dependencies:
     "@onsenui/custom-elements" "1.0.0"
-    core-js "2.4.1"
+    core-js "^2.5.1"
 
 open@0.0.5:
   version "0.0.5"
@@ -6425,9 +6421,9 @@ vue-loader@^13.3.0:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
-vue-onsenui@~2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/vue-onsenui/-/vue-onsenui-2.3.0.tgz#f6c1f2d340e2638d402d00a5c0560a8ce4f925fc"
+vue-onsenui@~2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/vue-onsenui/-/vue-onsenui-2.4.0.tgz#b88914f8bac1a45afc5e7d5160951480690fd369"
 
 vue-router@^3.0.1:
   version "3.0.1"
