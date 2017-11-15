@@ -34,21 +34,25 @@ export default {
     }
   },
 
-  async created () {
-    // Get ETH Account
-    let url = `${serverName}/api/v1/eth_accounts/`
-    let response = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
-      .catch(e => Promise.reject(new Error(e)))
-    this.ethAccount = response.data.results[0]
-
-    // Get balance
-    url = `${serverName}/api/v1/eth_accounts/${this.ethAccount.address}/get_balance/`
-    response = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
-      .catch(e => Promise.reject(new Error(e)))
-    this.balance = response.data
+  async mounted () {
+    this.getBalance()
   },
 
   methods: {
+    async getBalance () {
+      // Get ETH Account
+      let url = `${serverName}/api/v1/eth_accounts/`
+      let response = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
+        .catch(e => Promise.reject(new Error(e)))
+      this.ethAccount = response.data.results[0]
+
+      // Get balance
+      url = `${serverName}/api/v1/eth_accounts/${this.ethAccount.address}/get_balance/`
+      response = await axios.get(url, {headers: {'Authorization': `JWT ${this.token}`}})
+        .catch(e => Promise.reject(new Error(e)))
+      this.balance = response.data
+    },
+
     getQRcodeUrl () {
       return this.ethAccount.qrcode
     }
