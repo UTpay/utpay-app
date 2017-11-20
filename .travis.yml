@@ -8,8 +8,7 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
 install:
+  - yarn global add cordova ionic
   - yarn
-before_script:
-  - echo "export const serverName = 'http://127.0.0.1:8000'" > src/config.js
 script:
   - yarn build

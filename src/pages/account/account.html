@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'ACCOUNT_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <img [src]="user.userdata.ethAccount.qrcode"/>
+    <ion-card-content>
+      <ion-card-title>
+        @ropsten
+      </ion-card-title>
+      <p>{{ user.userdata.user.email }}</p>
+      <p>{{ user.userdata.ethAccount.address }}</p>
+    </ion-card-content>
+    <ion-list>
+      <ion-list-header>
+        残高
+      </ion-list-header>
+      <ion-item>
+        {{ user.userdata.balance.balance }} UTC
+      </ion-item>
+      <ion-item>
+        {{ user.userdata.balance.eth_balance }} ETH
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>
