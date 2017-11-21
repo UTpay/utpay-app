@@ -12,7 +12,7 @@
     <img [src]="user.userdata.ethAccount.qrcode"/>
     <ion-card-content>
       <ion-card-title>
-        @ropsten
+        @{{ user.userdata.user.username }}
       </ion-card-title>
       <p>{{ user.userdata.user.email }}</p>
       <p>{{ user.userdata.ethAccount.address }}</p>
