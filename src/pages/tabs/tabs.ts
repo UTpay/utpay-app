@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController } from 'ionic-angular';
 
 import { Tab1Root } from '../pages';
 import { Tab2Root } from '../pages';
@@ -20,7 +20,9 @@ export class TabsPage {
   tab2Title = " ";
   tab3Title = " ";
 
-  constructor(public navCtrl: NavController, public translateService: TranslateService) {
+  constructor(public navCtrl: NavController, public menu: MenuController, public translateService: TranslateService) {
+    this.menu.swipeEnable(true);
+
     translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE']).subscribe(values => {
       this.tab1Title = values['TAB1_TITLE'];
       this.tab2Title = values['TAB2_TITLE'];
