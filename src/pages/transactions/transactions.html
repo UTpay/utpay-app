@@ -7,6 +7,10 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let transaction of transactions">
+      [{{ transaction.created_at }}] {{ transaction.amount / 1000 }} UTC
+    </ion-item>
+  </ion-list>
 </ion-content>
