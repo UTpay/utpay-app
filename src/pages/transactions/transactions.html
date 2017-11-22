@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let transaction of transactions">
+    <ion-item *ngFor="let transaction of transactions" [ngClass]="(transaction.user.username == user.userdata.user.username) ? 'outgo' : 'income'">
       [{{ transaction.created_at }}] {{ transaction.amount / 1000 }} UTC
     </ion-item>
   </ion-list>
