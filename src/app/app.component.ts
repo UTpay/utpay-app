@@ -18,6 +18,7 @@ export class MyApp {
   pages: Array<{title: string, component: string}> = [
     { title: 'Account', component: 'AccountPage' },
     { title: 'Transfer', component: 'TransferPage' },
+    { title: 'Transactions', component: 'TransactionsPage' },
     { title: 'Tabs', component: 'TabsPage' },
     { title: 'Cards', component: 'CardsPage' },
     { title: 'Content', component: 'ContentPage' },
