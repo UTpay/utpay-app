@@ -1,15 +1,11 @@
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-/**
- * Api is a generic REST Api handler. Set your API url first.
- */
 @Injectable()
 export class Api {
   url: string = 'http://127.0.0.1:8000/api/v1';
 
-  constructor(public http: HttpClient) {
-  }
+  constructor(public http: HttpClient) {}
 
   get(endpoint: string, params?: any, headers?: any, reqOpts?: any) {
     if (!reqOpts) {

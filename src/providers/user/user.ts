@@ -13,21 +13,19 @@ export class User {
     balance: {}
   }
 
-  constructor(public api: Api) { }
+  constructor(public api: Api) {}
 
   /**
    * Send a POST request to our login endpoint with the data
    * the user entered on the form.
    */
   login(accountInfo: any) {
-    let seq = this.api.post('token-auth/', accountInfo).share();
-
-    seq.subscribe(
+    let req = this.api.post('token-auth/', accountInfo).share();
+    req.subscribe(
       res => this._loggedIn(res),
       err => console.error('ERROR', err)
     );
-
-    return seq;
+    return req;
   }
 
   /**
@@ -35,14 +33,12 @@ export class User {
    * the user entered on the form.
    */
   signup(accountInfo: any) {
-    let seq = this.api.post('register/', accountInfo).share();
-
-    seq.subscribe(
+    let req = this.api.post('register/', accountInfo).share();
+    req.subscribe(
       res => {},
       err => console.error('ERROR', err)
     );
-
-    return seq;
+    return req;
   }
 
   /**
@@ -62,14 +58,14 @@ export class User {
   getEthAccount() {
     console.log('getEthAccount');
     const headers = { Authorization: `JWT ${this.userdata.token}` };
-    let seq = this.api.get('eth_accounts/', null, headers).share();
-    seq.subscribe((res: any) => {
+    let req = this.api.get('eth_accounts/', null, headers).share();
+    req.subscribe((res: any) => {
       this.userdata.ethAccount = res.results[0];
       this.userdata.user = res.results[0].user;
 
       // Get balance
-      seq = this.api.get(`eth_accounts/${this.userdata.ethAccount.address}/get_balance/`, null, headers).share();
-      seq.subscribe((res: any) => {
+      req = this.api.get(`eth_accounts/${this.userdata.ethAccount.address}/get_balance/`, null, headers).share();
+      req.subscribe((res: any) => {
         this.userdata.balance = res;
         console.log(this.userdata);
       }, err => {

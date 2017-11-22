@@ -10,8 +10,7 @@ import { User } from '../../providers/providers';
 })
 export class AccountPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public user: User) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public user: User) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountPage');
