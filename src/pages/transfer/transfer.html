@@ -7,8 +7,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <form (submit)="doTransfer()">
+    <ion-list-header>UTCoin</ion-list-header>
     <ion-item>
       <ion-label>宛先</ion-label>
       <ion-input type="text" required [(ngModel)]="transferInfo.address" name="address" placeholder="0x..."></ion-input>
@@ -23,4 +24,8 @@
       <button ion-button color="primary" block>送金する</button>
     </div>
   </form>
+
+  <ion-fab middle right>
+    <button ion-fab><ion-icon name="qr-scanner"></ion-icon></button>
+  </ion-fab>
 </ion-content>
