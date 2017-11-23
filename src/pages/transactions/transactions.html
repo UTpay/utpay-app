@@ -9,7 +9,11 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let transaction of transactions" [ngClass]="(transaction.user.username == user.userdata.user.username) ? 'outgo' : 'income'">
+    <ion-item
+      *ngFor="let transaction of transactions"
+      [ngClass]="(transaction.user.username == user.userdata.user.username) ? 'outgo' : 'income'"
+      (click)="presentDetailModal(transaction)"
+    >
       [{{ transaction.created_at }}] {{ transaction.amount / 1000 }} UTC
     </ion-item>
   </ion-list>
