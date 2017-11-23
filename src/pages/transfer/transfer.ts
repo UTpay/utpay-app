@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { Api } from '../../providers/api/api';
 import { User } from '../../providers/user/user';
@@ -16,7 +17,14 @@ export class TransferPage {
     amount: ''
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public api: Api, public user: User) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private alertCtrl: AlertController,
+    private barcodeScanner: BarcodeScanner,
+    public api: Api,
+    public user: User
+  ) {
     console.log(user);
   }
 
@@ -79,6 +87,16 @@ export class TransferPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  _scanBarcode() {
+    console.log('_scanBarcode');
+    this.barcodeScanner.scan().then(result => {
+      if (result.cancelled) return
+      this.transferInfo.address = result.text;
+    }, (err) => {
+      console.error('ERROR', err);
+    });
   }
 
 }
