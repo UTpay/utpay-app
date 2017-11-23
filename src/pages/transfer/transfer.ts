@@ -37,7 +37,6 @@ export class TransferPage {
     this._confirm();
   }
 
-  // FIXME: POST の body にデータが入らん
   transfer(transferInfo) {
     console.log('transfer');
     console.log(transferInfo);
@@ -50,7 +49,7 @@ export class TransferPage {
       console.log(resp);
       if (resp['success']) {
         console.log('ok');
-        this._alert('エラー', '送金完了', '正常に送金されました！');
+        this._alert('送金完了', null, '<p>正常に送金されました！</p><p>トランザクションの確認に時間がかかる場合があります。</p>');
       } else {
         this._alert('エラー', '送金に失敗しました', resp['detail']);
       }
@@ -79,7 +78,7 @@ export class TransferPage {
     alert.present();
   }
 
-  _alert(title: string, subTitle: string, message: string = '') {
+  _alert(title: string, subTitle: string = '', message: string = '') {
     const alert = this.alertCtrl.create({
       title: title,
       subTitle: subTitle,
