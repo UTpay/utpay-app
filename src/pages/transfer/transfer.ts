@@ -32,6 +32,16 @@ export class TransferPage {
     console.log('ionViewDidLoad TransferPage');
   }
 
+  scanBarcode() {
+    console.log('_scanBarcode');
+    this.barcodeScanner.scan().then(result => {
+      if (result.cancelled) return
+      this.transferInfo.address = result.text;
+    }, (err) => {
+      console.error('ERROR', err);
+    });
+  }
+
   doTransfer() {
     console.log('transferInfo:', this.transferInfo);
     this._confirm();
@@ -86,16 +96,6 @@ export class TransferPage {
       buttons: ['OK']
     });
     alert.present();
-  }
-
-  _scanBarcode() {
-    console.log('_scanBarcode');
-    this.barcodeScanner.scan().then(result => {
-      if (result.cancelled) return
-      this.transferInfo.address = result.text;
-    }, (err) => {
-      console.error('ERROR', err);
-    });
   }
 
 }
