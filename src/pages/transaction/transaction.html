@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>取引詳細</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Close</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>TxHash</ion-list-header>
+    <ion-item>{{ transaction.tx_hash }}</ion-item>
+
+    <ion-list-header>From</ion-list-header>
+    <ion-item>{{ transaction.from_address }}</ion-item>
+
+    <ion-list-header>To</ion-list-header>
+    <ion-item>{{ transaction.to_address }}</ion-item>
+
+    <ion-list-header>金額</ion-list-header>
+    <ion-item>{{ transaction.amount }} UTC</ion-item>
+
+    <ion-list-header>日時</ion-list-header>
+    <ion-item>{{ transaction.created_at }}</ion-item>
+  </ion-list>
+</ion-content>
