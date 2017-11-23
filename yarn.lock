@@ -62,6 +62,10 @@
   dependencies:
     tslib "^1.7.1"
 
+"@ionic-native/barcode-scanner@^4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@ionic-native/barcode-scanner/-/barcode-scanner-4.4.2.tgz#e28e90fb96fbcdad221717414ac0c3142772a012"
+
 "@ionic-native/camera@4.3.3":
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/@ionic-native/camera/-/camera-4.3.3.tgz#5d65b5dbb7292b0a01139084e760d9eec1f3bec0"
@@ -2476,6 +2480,10 @@ performance-now@^0.2.0:
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
+
+phonegap-plugin-barcodescanner@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/phonegap-plugin-barcodescanner/-/phonegap-plugin-barcodescanner-7.0.0.tgz#3868c21361489fa0edf86ba31d87bc1bde69554b"
 
 pify@^2.0.0:
   version "2.3.0"
