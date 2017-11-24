@@ -27,6 +27,7 @@ interface Transaction {
   templateUrl: 'transactions.html',
 })
 export class TransactionsPage {
+  pageTitle: string = '取引履歴';
 
   transactions: Transaction[] = [];
 

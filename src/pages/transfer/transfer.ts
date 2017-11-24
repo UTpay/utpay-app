@@ -12,6 +12,8 @@ import { User } from '../../providers/user/user';
 })
 export class TransferPage {
 
+  pageTitle: string = '送金';
+
   transferInfo: { address: string, amount: string } = {
     address: '',
     amount: ''

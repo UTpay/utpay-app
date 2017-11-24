@@ -23,6 +23,8 @@ interface Transaction {
   templateUrl: 'transaction.html',
 })
 export class TransactionPage {
+  pageTitle: string = '取引詳細';
+
   transaction: Transaction;
 
   constructor(public navParams: NavParams, public viewCtrl: ViewController) {

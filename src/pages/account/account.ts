@@ -10,6 +10,8 @@ import { User } from '../../providers/providers';
 })
 export class AccountPage {
 
+  pageTitle: string = 'アカウント';
+
   constructor(public user: User) {}
 
   ionViewDidLoad() {
