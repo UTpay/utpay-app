@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import { FirstRunPage, MainPage } from '../pages/pages';
+import { TutorialPage, WelcomePage, MainPage } from '../pages/pages';
 
 import { User } from '../providers/providers';
 import { Settings } from '../providers/providers';
@@ -14,7 +14,7 @@ import { Settings } from '../providers/providers';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+  rootPage: any;
 
   @ViewChild(Nav) nav: Nav;
 
@@ -32,22 +32,43 @@ export class MyApp {
   ];
 
   constructor(private translate: TranslateService,
-    platform: Platform,
+    public platform: Platform,
     public user: User,
-    settings: Settings,
+    public settings: Settings,
     private config: Config,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
     private storage: Storage
   ) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+    // Check if the user has already seen the tutorial
+    this.storage.get('hasSeenTutorial').then(hasSeenTutorial => {
+      console.log('hasSeenTutorial:', hasSeenTutorial);
+      if (hasSeenTutorial) {
+        // Login if `authToken` exists
+        this.storage.get('authToken').then(authToken => {
+          console.log('authToken:', authToken);
+          if (authToken) {
+            this.user.userdata.token = authToken;
+            this.rootPage = MainPage;
+          } else {
+            this.rootPage = WelcomePage;
+          }
+        });
+      } else {
+        this.rootPage = TutorialPage;
+      }
+      this.platformReady();
+    });
+
+    this.initTranslate();
+  }
+
+  platformReady() {
+    // Call any initial plugins when ready
+    this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    this.initTranslate();
-    this.autoLogin();
   }
 
   initTranslate() {
@@ -69,16 +90,5 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
-  }
-
-  autoLogin() {
-    this.storage.get('authToken').then(val => {
-      console.log('authToken:', val);
-      if (val) {
-        // Login if authToken exists
-        this.user.userdata.token = val;
-        this.nav.setRoot(MainPage);
-      }
-    });
   }
 }
