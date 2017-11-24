@@ -1,6 +1,7 @@
 import 'rxjs/add/operator/toPromise';
 
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 import { Api } from '../api/api';
 
@@ -13,7 +14,7 @@ export class User {
     balance: {}
   }
 
-  constructor(public api: Api) {}
+  constructor(private storage: Storage, public api: Api) {}
 
   /**
    * Send a POST request to our login endpoint with the data
@@ -53,6 +54,7 @@ export class User {
    */
   _loggedIn(resp) {
     this.userdata.token = resp.token;
+    this.storage.set('authToken', resp.token);
   }
 
   getEthAccount() {

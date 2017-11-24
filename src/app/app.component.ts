@@ -3,8 +3,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
-import { FirstRunPage } from '../pages/pages';
+import { FirstRunPage, MainPage } from '../pages/pages';
+
+import { User } from '../providers/providers';
 import { Settings } from '../providers/providers';
 
 @Component({
@@ -28,7 +31,15 @@ export class MyApp {
     { title: 'Search', component: 'SearchPage' }
   ];
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(private translate: TranslateService,
+    platform: Platform,
+    public user: User,
+    settings: Settings,
+    private config: Config,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    private storage: Storage
+  ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -36,6 +47,7 @@ export class MyApp {
       this.splashScreen.hide();
     });
     this.initTranslate();
+    this.autoLogin();
   }
 
   initTranslate() {
@@ -57,5 +69,16 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  autoLogin() {
+    this.storage.get('authToken').then(val => {
+      console.log('authToken:', val);
+      if (val) {
+        // Login if authToken exists
+        this.user.userdata.token = val;
+        this.nav.setRoot(MainPage);
+      }
+    });
   }
 }
