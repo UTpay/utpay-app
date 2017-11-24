@@ -86,4 +86,5 @@
     <plugin name="phonegap-plugin-barcodescanner" spec="^7.0.0">
         <variable name="CAMERA_USAGE_DESCRIPTION" value="To scan barcode" />
     </plugin>
+    <plugin name="cordova-sqlite-storage" spec="^2.1.2" />
 </widget>

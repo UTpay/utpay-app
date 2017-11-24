@@ -113,7 +113,7 @@
     ws "^3.2.0"
     xml2js "^0.4.19"
 
-"@ionic/storage@2.1.3":
+"@ionic/storage@^2.1.3":
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/@ionic/storage/-/storage-2.1.3.tgz#05dcf396a759879bf7aea42cfed61519562a13c7"
   dependencies:
@@ -813,6 +813,16 @@ cordova-plugin-whitelist@^1.3.3:
 cordova-registry-mapper@^1.1.8:
   version "1.1.15"
   resolved "https://registry.yarnpkg.com/cordova-registry-mapper/-/cordova-registry-mapper-1.1.15.tgz#e244b9185b8175473bff6079324905115f83dc7c"
+
+cordova-sqlite-storage-dependencies@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/cordova-sqlite-storage-dependencies/-/cordova-sqlite-storage-dependencies-1.0.4.tgz#8279afc8d83b0161bfa7dd9c228a827f5dd8145e"
+
+cordova-sqlite-storage@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/cordova-sqlite-storage/-/cordova-sqlite-storage-2.1.2.tgz#fb3ccc842d088fde5513b7d3160a88319fb72ea4"
+  dependencies:
+    cordova-sqlite-storage-dependencies "1.0.4"
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
