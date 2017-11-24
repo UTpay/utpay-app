@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { Settings } from '../../providers/providers';
+import { User } from '../../providers/providers';
+import { WelcomePage } from '../welcome/welcome';
 
 /**
  * The Settings page is a simple form that syncs with a Settings provider
@@ -36,6 +38,8 @@ export class SettingsPage {
 
   constructor(public navCtrl: NavController,
     public settings: Settings,
+    public user: User,
+    private alertCtrl: AlertController,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
     public translate: TranslateService) {
@@ -91,5 +95,30 @@ export class SettingsPage {
 
   ngOnChanges() {
     console.log('Ng All Changes');
+  }
+
+  doLogout() {
+    const alert = this.alertCtrl.create({
+      title: '確認',
+      message: 'ログアウトしますか？',
+      buttons: [
+        {
+          text: 'キャンセル',
+          role: 'cancel',
+          handler: () => console.log('Canceled')
+        },
+        {
+          text: 'OK',
+          handler: () => this._logout()
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  _logout() {
+    console.log('_logout');
+    this.user.logout();
+    this.navCtrl.setRoot(WelcomePage);
   }
 }
