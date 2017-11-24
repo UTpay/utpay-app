@@ -53,11 +53,16 @@ export class TransactionsPage {
     }, err => {
       console.error('ERROR', err);
     });
+    return req;
   }
 
   presentDetailModal(transaction) {
     const modal = this.modalCtrl.create(TransactionPage, { transaction });
     modal.present();
+  }
+
+  doRefresh(refresher) {
+    this.getTransactions().subscribe(resp => refresher.complete());
   }
 
 }

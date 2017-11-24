@@ -17,4 +17,12 @@
       [{{ transaction.created_at }}] {{ transaction.amount / 1000 }} UTC
     </ion-item>
   </ion-list>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
 </ion-content>
