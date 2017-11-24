@@ -29,8 +29,6 @@ export class SignupPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
 
-    this.menu.swipeEnable(false);
-
     this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
     })
@@ -51,5 +49,13 @@ export class SignupPage {
       });
       toast.present();
     });
+  }
+
+  ionViewDidEnter() {
+    this.menu.enable(false);
+  }
+
+  ionViewWillLeave() {
+    this.menu.enable(true);
   }
 }

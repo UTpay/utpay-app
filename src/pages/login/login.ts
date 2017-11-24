@@ -25,8 +25,6 @@ export class LoginPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
 
-    this.menu.swipeEnable(false);
-
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     })
@@ -45,5 +43,13 @@ export class LoginPage {
       });
       toast.present();
     });
+  }
+
+  ionViewDidEnter() {
+    this.menu.enable(false);
+  }
+
+  ionViewWillLeave() {
+    this.menu.enable(true);
   }
 }

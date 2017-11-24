@@ -14,9 +14,7 @@ import { IonicPage, NavController, MenuController } from 'ionic-angular';
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController, public menu: MenuController) {
-    this.menu.swipeEnable(false);
-  }
+  constructor(public navCtrl: NavController, public menu: MenuController) {}
 
   login() {
     this.navCtrl.push('LoginPage');
@@ -24,5 +22,13 @@ export class WelcomePage {
 
   signup() {
     this.navCtrl.push('SignupPage');
+  }
+
+  ionViewDidEnter() {
+    this.menu.enable(false);
+  }
+
+  ionViewWillLeave() {
+    this.menu.enable(true);
   }
 }
