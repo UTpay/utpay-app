@@ -19,12 +19,12 @@ export class MyApp {
     { title: 'アカウント', component: 'AccountPage' },
     { title: '送金', component: 'TransferPage' },
     { title: '取引履歴', component: 'TransactionsPage' },
+    { title: '設定', component: 'SettingsPage' },
     { title: 'Tabs', component: 'TabsPage' },
     { title: 'Cards', component: 'CardsPage' },
     { title: 'Content', component: 'ContentPage' },
     { title: 'Master Detail', component: 'ListMasterPage' },
     { title: 'Menu', component: 'MenuPage' },
-    { title: 'Settings', component: 'SettingsPage' },
     { title: 'Search', component: 'SearchPage' }
   ];
 
