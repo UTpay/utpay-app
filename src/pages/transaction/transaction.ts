@@ -27,7 +27,7 @@ export class TransactionPage {
 
   constructor(public navParams: NavParams, public viewCtrl: ViewController) {
     this.transaction = navParams.get('transaction');
-    console.log(this.transaction);
+    console.log('transaction:', this.transaction);
   }
 
   dismiss() {

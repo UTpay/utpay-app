@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 
 import { User } from '../../providers/providers';
 
@@ -10,12 +10,12 @@ import { User } from '../../providers/providers';
 })
 export class AccountPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public user: User) {}
+  constructor(public user: User) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountPage');
     this.user.getEthAccount();
-    console.log(this.user.userdata);
+    console.log('userdata:', this.user.userdata);
   }
 
 }

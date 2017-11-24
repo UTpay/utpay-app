@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, AlertController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { Api } from '../../providers/api/api';
@@ -18,22 +18,18 @@ export class TransferPage {
   };
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
     private alertCtrl: AlertController,
     private barcodeScanner: BarcodeScanner,
     public api: Api,
     public user: User
-  ) {
-    console.log(user);
-  }
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TransferPage');
   }
 
   scanBarcode() {
-    console.log('_scanBarcode');
+    console.log('scanBarcode');
     this.barcodeScanner.scan().then(result => {
       if (result.cancelled) return
       this.transferInfo.address = result.text;
@@ -43,13 +39,12 @@ export class TransferPage {
   }
 
   doTransfer() {
-    console.log('transferInfo:', this.transferInfo);
     this._confirm();
   }
 
   transfer(transferInfo) {
     console.log('transfer');
-    console.log(transferInfo);
+    console.log('transferInfo:', transferInfo);
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `JWT ${this.user.userdata.token}`
@@ -58,7 +53,6 @@ export class TransferPage {
     req.subscribe(resp => {
       console.log(resp);
       if (resp['success']) {
-        console.log('ok');
         this._alert('送金完了', null, '<p>正常に送金されました！</p><p>トランザクションの確認に時間がかかる場合があります。</p>');
       } else {
         this._alert('エラー', '送金に失敗しました', resp['detail']);

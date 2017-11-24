@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, ModalController } from 'ionic-angular';
 
 import { Api } from '../../providers/api/api';
 import { User } from '../../providers/user/user';
@@ -29,11 +29,8 @@ interface Transaction {
 export class TransactionsPage {
 
   transactions: Transaction[] = [];
-  selected_transaction: Transaction;
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
     private modalCtrl: ModalController,
     public api: Api,
     public user: User
@@ -45,11 +42,12 @@ export class TransactionsPage {
   }
 
   getTransactions() {
+    console.log('getTransactions');
     const headers = { 'Authorization': `JWT ${this.user.userdata.token}` };
     let req = this.api.get('transactions/?ordering=-id', null, headers).share();
     req.subscribe(resp => {
+      console.log('transactions:', resp['results']);
       this.transactions = resp['results'];
-      console.log('transactions:', this.transactions);
     }, err => {
       console.error('ERROR', err);
     });

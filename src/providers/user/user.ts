@@ -67,7 +67,6 @@ export class User {
       req = this.api.get(`eth_accounts/${this.userdata.ethAccount.address}/get_balance/`, null, headers).share();
       req.subscribe((res: any) => {
         this.userdata.balance = res;
-        console.log(this.userdata);
       }, err => {
         console.error('ERROR', err);
       });
