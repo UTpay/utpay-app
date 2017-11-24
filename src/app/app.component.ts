@@ -16,9 +16,9 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: Array<{title: string, component: string}> = [
-    { title: 'Account', component: 'AccountPage' },
-    { title: 'Transfer', component: 'TransferPage' },
-    { title: 'Transactions', component: 'TransactionsPage' },
+    { title: 'アカウント', component: 'AccountPage' },
+    { title: '送金', component: 'TransferPage' },
+    { title: '取引履歴', component: 'TransactionsPage' },
     { title: 'Tabs', component: 'TabsPage' },
     { title: 'Cards', component: 'CardsPage' },
     { title: 'Content', component: 'ContentPage' },
