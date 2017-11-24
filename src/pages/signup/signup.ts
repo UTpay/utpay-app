@@ -38,7 +38,7 @@ export class SignupPage {
     // Attempt to login in through our User service
     this.user.signup(this.account).subscribe(resp => {
       this.user.login({ username: this.account.username, password: this.account.password }).subscribe(resp => {
-        this.navCtrl.push(MainPage);
+        this.navCtrl.setRoot(MainPage);
       })
     }, err => {
       // Unable to sign up
