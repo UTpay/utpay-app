@@ -5,7 +5,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 
 import { Settings } from '../../providers/providers';
 import { User } from '../../providers/providers';
-import { WelcomePage } from '../welcome/welcome';
+import { WelcomePage } from '../pages';
 
 /**
  * The Settings page is a simple form that syncs with a Settings provider
@@ -117,7 +117,7 @@ export class SettingsPage {
   }
 
   _logout() {
-    console.log('_logout');
+    console.log('logout');
     this.user.logout();
     this.navCtrl.setRoot(WelcomePage);
   }

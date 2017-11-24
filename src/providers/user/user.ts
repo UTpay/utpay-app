@@ -46,7 +46,14 @@ export class User {
    * Log the user out, which forgets the session
    */
   logout() {
-    this.userdata = null;
+    // Initialize `userdata`
+    this.userdata = {
+      token: '',
+      user: {},
+      ethAccount: {},
+      balance: {}
+    };
+    this.storage.remove('authToken');
   }
 
   /**
