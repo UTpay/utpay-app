@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HeaderColor } from '@ionic-native/header-color';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -37,6 +38,7 @@ export class MyApp {
     public settings: Settings,
     private config: Config,
     private statusBar: StatusBar,
+    private headerColor: HeaderColor,
     private splashScreen: SplashScreen,
     private storage: Storage
   ) {
@@ -67,6 +69,7 @@ export class MyApp {
     // Call any initial plugins when ready
     this.platform.ready().then(() => {
       this.statusBar.backgroundColorByHexString('#c29100');
+      this.headerColor.tint('#fbc02d');
       this.splashScreen.hide();
     });
   }
