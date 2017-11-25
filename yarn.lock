@@ -800,6 +800,10 @@ cordova-plugin-splashscreen@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-4.1.0.tgz#81028ab7643e615593d27f2ad02445611f1946b6"
 
+cordova-plugin-statusbar@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-statusbar/-/cordova-plugin-statusbar-2.3.0.tgz#314e1d009c65910cdfde034bfca13bd502c9e5e0"
+
 cordova-plugin-swift-support@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/cordova-plugin-swift-support/-/cordova-plugin-swift-support-3.1.1.tgz#0ee58068fb65066a0126480ef9af3a4618c6b0c1"

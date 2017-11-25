@@ -87,4 +87,5 @@
         <variable name="CAMERA_USAGE_DESCRIPTION" value="To scan barcode" />
     </plugin>
     <plugin name="cordova-sqlite-storage" spec="^2.1.2" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.3.0" />
 </widget>
