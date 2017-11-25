@@ -66,7 +66,7 @@ export class MyApp {
   platformReady() {
     // Call any initial plugins when ready
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString('#c29100');
       this.splashScreen.hide();
     });
   }
