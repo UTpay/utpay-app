@@ -44,7 +44,7 @@ export class TransactionsPage {
 
   getTransactions() {
     console.log('getTransactions');
-    const headers = { 'Authorization': `JWT ${this.user.userdata.token}` };
+    const headers = { 'Authorization': `Bearer ${this.user.userdata.token}` };
     let req = this.api.get('transactions/?ordering=-id', null, headers).share();
     req.subscribe(resp => {
       console.log('transactions:', resp['results']);

@@ -49,7 +49,7 @@ export class TransferPage {
     console.log('transferInfo:', transferInfo);
     const headers = {
       'Content-Type': 'application/json',
-      'Authorization': `JWT ${this.user.userdata.token}`
+      'Authorization': `Bearer ${this.user.userdata.token}`
     };
     let req = this.api.post('transactions/transfer/', transferInfo, headers).share();
     req.subscribe(resp => {

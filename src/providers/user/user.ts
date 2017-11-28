@@ -66,7 +66,7 @@ export class User {
 
   getEthAccount() {
     console.log('getEthAccount');
-    const headers = { Authorization: `JWT ${this.userdata.token}` };
+    const headers = { Authorization: `Bearer ${this.userdata.token}` };
     let req = this.api.get('eth_accounts/', null, headers).share();
     req.subscribe((res: any) => {
       this.userdata.ethAccount = res.results[0];
