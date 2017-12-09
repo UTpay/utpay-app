@@ -66,25 +66,25 @@
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@ionic-native/barcode-scanner/-/barcode-scanner-4.4.2.tgz#e28e90fb96fbcdad221717414ac0c3142772a012"
 
-"@ionic-native/camera@4.3.3":
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/@ionic-native/camera/-/camera-4.3.3.tgz#5d65b5dbb7292b0a01139084e760d9eec1f3bec0"
+"@ionic-native/camera@4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/camera/-/camera-4.5.0.tgz#5d5665c8708cf3199750be05139640f902567f28"
 
-"@ionic-native/core@4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-4.4.0.tgz#fb0f071543bd2725d858f5a0f5c20adbece20df4"
+"@ionic-native/core@4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-4.5.0.tgz#52db87049f0fe10ca713f35ef5fa2b4f8f577a1c"
 
 "@ionic-native/header-color@^4.4.2":
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@ionic-native/header-color/-/header-color-4.4.2.tgz#a3685841489e22157cc4129fc91360da753ff305"
 
-"@ionic-native/splash-screen@4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-4.4.0.tgz#81ed723d7fd3f0d643072b5461fa0c32dcc330b1"
+"@ionic-native/splash-screen@4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/splash-screen/-/splash-screen-4.5.0.tgz#b78e6ea0aad750548f337b18c6e835533a639c7e"
 
-"@ionic-native/status-bar@4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-4.4.0.tgz#35bcf2012ece652bd765a972008bec5a7f258a95"
+"@ionic-native/status-bar@4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/status-bar/-/status-bar-4.5.0.tgz#df077408947ea3003202ad7fdba6aba03f83bc4e"
 
 "@ionic/app-scripts@3.1.5":
   version "3.1.5"
