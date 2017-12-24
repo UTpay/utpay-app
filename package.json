@@ -31,7 +31,7 @@
     "@ngx-translate/http-loader": "^2.0.0",
     "cordova-android": "^7.0.0",
     "cordova-ios": "4.5.4",
-    "cordova-plugin-device": "^1.1.7",
+    "cordova-plugin-device": "^2.0.0",
     "cordova-plugin-headercolor": "^1.0.0",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-splashscreen": "^4.1.0",
