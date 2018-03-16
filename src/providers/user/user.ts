@@ -7,11 +7,10 @@ import { Api } from '../api/api';
 
 @Injectable()
 export class User {
-  userdata: { token: string, user: any, ethAccount: any, balance: any } = {
+  userdata: { token: string, user: any, account: any } = {
     token: '',
     user: {},
-    ethAccount: {},
-    balance: {}
+    account: {}
   }
 
   constructor(private storage: Storage, public api: Api) {}
@@ -50,8 +49,7 @@ export class User {
     this.userdata = {
       token: '',
       user: {},
-      ethAccount: {},
-      balance: {}
+      account: {}
     };
     this.storage.remove('authToken');
   }
@@ -64,21 +62,13 @@ export class User {
     this.storage.set('authToken', resp.token);
   }
 
-  getEthAccount() {
-    console.log('getEthAccount');
+  getAccount() {
+    console.log('getAccount');
     const headers = { Authorization: `Bearer ${this.userdata.token}` };
-    let req = this.api.get('eth_accounts/', null, headers).share();
+    let req = this.api.get('accounts/', null, headers).share();
     req.subscribe((res: any) => {
-      this.userdata.ethAccount = res.results[0];
+      this.userdata.account = res.results[0];
       this.userdata.user = res.results[0].user;
-
-      // Get balance
-      req = this.api.get(`eth_accounts/${this.userdata.ethAccount.address}/get_balance/`, null, headers).share();
-      req.subscribe((res: any) => {
-        this.userdata.balance = res;
-      }, err => {
-        console.error('ERROR', err);
-      });
     }, err => {
       console.error('ERROR', err);
     });

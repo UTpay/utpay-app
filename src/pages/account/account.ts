@@ -16,7 +16,7 @@ export class AccountPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountPage');
-    this.user.getEthAccount();
+    this.user.getAccount();
     console.log('userdata:', this.user.userdata);
   }
 
