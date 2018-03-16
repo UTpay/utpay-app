@@ -7,8 +7,6 @@ import { EthTransactionPage } from '../eth-transaction/eth-transaction';
 
 interface EthTransaction {
   id: number;
-  user: any;
-  eth_account: any;
   tx_hash: string;
   from_address: string;
   to_address: string;

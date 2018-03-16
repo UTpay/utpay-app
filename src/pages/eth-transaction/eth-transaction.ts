@@ -3,8 +3,6 @@ import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 
 interface EthTransaction {
   id: number;
-  user: any;
-  eth_account: any;
   tx_hash: string;
   from_address: string;
   to_address: string;
