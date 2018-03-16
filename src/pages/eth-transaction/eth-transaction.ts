@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 
-interface Transaction {
+interface EthTransaction {
   id: number;
   user: any;
   eth_account: any;
@@ -22,14 +22,14 @@ interface Transaction {
   selector: 'page-transaction',
   templateUrl: 'eth-transaction.html',
 })
-export class TransactionPage {
+export class EthTransactionPage {
   pageTitle: string = '取引詳細';
 
-  transaction: Transaction;
+  ethTransaction: EthTransaction;
 
   constructor(public navParams: NavParams, public viewCtrl: ViewController) {
-    this.transaction = navParams.get('transaction');
-    console.log('transaction:', this.transaction);
+    this.ethTransaction = navParams.get('ethTransaction');
+    console.log('ethTransaction:', this.ethTransaction);
   }
 
   dismiss() {

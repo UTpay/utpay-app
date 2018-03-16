@@ -3,9 +3,9 @@ import { IonicPage, ModalController } from 'ionic-angular';
 
 import { Api } from '../../providers/api/api';
 import { User } from '../../providers/user/user';
-import { TransactionPage } from '../eth-transaction/eth-transaction';
+import { EthTransactionPage } from '../eth-transaction/eth-transaction';
 
-interface Transaction {
+interface EthTransaction {
   id: number;
   user: any;
   eth_account: any;
@@ -26,10 +26,10 @@ interface Transaction {
   selector: 'page-transactions',
   templateUrl: 'eth-transactions.html',
 })
-export class TransactionsPage {
+export class EthTransactionsPage {
   pageTitle: string = '取引履歴';
 
-  transactions: Transaction[] = [];
+  ethTransactions: EthTransaction[] = [];
 
   constructor(
     private modalCtrl: ModalController,
@@ -38,30 +38,30 @@ export class TransactionsPage {
   ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TransactionsPage');
-    this.getTransactions();
+    console.log('ionViewDidLoad EthTransactionsPage');
+    this.getEthTransactions();
   }
 
-  getTransactions() {
-    console.log('getTransactions');
+  getEthTransactions() {
+    console.log('getEthTransactions');
     const headers = { 'Authorization': `Bearer ${this.user.userdata.token}` };
-    let req = this.api.get('transactions/?ordering=-id', null, headers).share();
+    let req = this.api.get('eth_transactions/?ordering=-id', null, headers).share();
     req.subscribe(resp => {
-      console.log('transactions:', resp['results']);
-      this.transactions = resp['results'];
+      console.log('eth_transactions:', resp['results']);
+      this.ethTransactions = resp['results'];
     }, err => {
       console.error('ERROR', err);
     });
     return req;
   }
 
-  presentDetailModal(transaction) {
-    const modal = this.modalCtrl.create(TransactionPage, { transaction });
+  presentDetailModal(ethTransaction) {
+    const modal = this.modalCtrl.create(EthTransactionPage, { ethTransaction });
     modal.present();
   }
 
   doRefresh(refresher) {
-    this.getTransactions().subscribe(resp => refresher.complete());
+    this.getEthTransactions().subscribe(resp => refresher.complete());
   }
 
 }
