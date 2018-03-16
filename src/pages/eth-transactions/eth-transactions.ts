@@ -3,7 +3,7 @@ import { IonicPage, ModalController } from 'ionic-angular';
 
 import { Api } from '../../providers/api/api';
 import { User } from '../../providers/user/user';
-import { TransactionPage } from '../transaction/transaction';
+import { TransactionPage } from '../eth-transaction/eth-transaction';
 
 interface Transaction {
   id: number;
@@ -24,7 +24,7 @@ interface Transaction {
 @IonicPage()
 @Component({
   selector: 'page-transactions',
-  templateUrl: 'transactions.html',
+  templateUrl: 'eth-transactions.html',
 })
 export class TransactionsPage {
   pageTitle: string = '取引履歴';

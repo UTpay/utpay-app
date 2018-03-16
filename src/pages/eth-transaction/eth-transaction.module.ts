@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { TransactionPage } from './transaction';
+import { TransactionPage } from './eth-transaction';
 
 @NgModule({
   declarations: [

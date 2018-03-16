@@ -20,7 +20,7 @@ interface Transaction {
 @IonicPage()
 @Component({
   selector: 'page-transaction',
-  templateUrl: 'transaction.html',
+  templateUrl: 'eth-transaction.html',
 })
 export class TransactionPage {
   pageTitle: string = '取引詳細';
