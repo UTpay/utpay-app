@@ -22,7 +22,7 @@ export class MyApp {
   pages: Array<{title: string, component: string}> = [
     { title: 'アカウント', component: 'AccountPage' },
     { title: '送金', component: 'TransferPage' },
-    { title: '取引履歴', component: 'EthTransactionsPage' },
+    { title: '取引履歴', component: 'TransactionsPage' },
     { title: '設定', component: 'SettingsPage' }
   ];
 
