@@ -66,9 +66,9 @@
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@ionic-native/barcode-scanner/-/barcode-scanner-4.4.2.tgz#e28e90fb96fbcdad221717414ac0c3142772a012"
 
-"@ionic-native/camera@4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@ionic-native/camera/-/camera-4.5.2.tgz#a1011e66c4c0dcb31ae959bd64b51cd7b93bdb28"
+"@ionic-native/camera@4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/camera/-/camera-4.6.0.tgz#2bc8305040dc7ecf3720f60793c1002f4198e862"
 
 "@ionic-native/core@4.5.2":
   version "4.5.2"
