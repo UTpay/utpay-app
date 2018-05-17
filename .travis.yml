@@ -3,6 +3,7 @@ cache: yarn
 node_js:
   - 7
   - 8
+  - 10
 sudo: required
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
