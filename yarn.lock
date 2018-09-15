@@ -66,9 +66,9 @@
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@ionic-native/barcode-scanner/-/barcode-scanner-4.4.2.tgz#e28e90fb96fbcdad221717414ac0c3142772a012"
 
-"@ionic-native/camera@4.6.0":
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/@ionic-native/camera/-/camera-4.6.0.tgz#2bc8305040dc7ecf3720f60793c1002f4198e862"
+"@ionic-native/camera@4.13.0":
+  version "4.13.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/camera/-/camera-4.13.0.tgz#1db94bfa73b905d7d0b6acf9405dfb0d8773247a"
 
 "@ionic-native/core@4.5.2":
   version "4.5.2"
@@ -129,9 +129,11 @@
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-8.0.0.tgz#751fd6b512d80f3a748d2de8dfc96dfefa29afe0"
 
-"@ngx-translate/http-loader@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-2.0.0.tgz#9c16d07cd070c67ada270a2e940281eb826b3f43"
+"@ngx-translate/http-loader@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-3.0.1.tgz#20b0f98bc6c25321129d3e3302ab3cc489c0a42a"
+  dependencies:
+    tslib "^1.9.0"
 
 "@types/localforage@0.0.30":
   version "0.0.30"
@@ -808,9 +810,9 @@ cordova-plugin-headercolor@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/cordova-plugin-headercolor/-/cordova-plugin-headercolor-1.0.0.tgz#020acd943787ee039d67f679e8d9ea6d38920316"
 
-cordova-plugin-ionic-webview@^1.1.16:
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.1.16.tgz#92d5f2e4a5a829f91b487b1761848765a31c9f1e"
+cordova-plugin-ionic-webview@^2.0.0:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-2.1.4.tgz#e0c87297157537343b31fa1b79fab658635ff76e"
 
 cordova-plugin-splashscreen@^5.0.0:
   version "5.0.0"
@@ -2558,9 +2560,9 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
 
-phonegap-plugin-barcodescanner@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/phonegap-plugin-barcodescanner/-/phonegap-plugin-barcodescanner-7.0.0.tgz#3868c21361489fa0edf86ba31d87bc1bde69554b"
+phonegap-plugin-barcodescanner@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/phonegap-plugin-barcodescanner/-/phonegap-plugin-barcodescanner-8.0.0.tgz#bdad5454bcbb1c27b0ded0bc5c646227e7a91f06"
 
 pify@^2.0.0:
   version "2.3.0"
@@ -3410,6 +3412,10 @@ tsickle@^0.26.0:
 tslib@^1.0.0, tslib@^1.7.1:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.8.0.tgz#dc604ebad64bcbf696d613da6c954aa0e7ea1eb6"
+
+tslib@^1.9.0:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
 
 tslint-eslint-rules@^4.1.1:
   version "4.1.1"
