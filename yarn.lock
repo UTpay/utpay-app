@@ -810,9 +810,9 @@ cordova-plugin-headercolor@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/cordova-plugin-headercolor/-/cordova-plugin-headercolor-1.0.0.tgz#020acd943787ee039d67f679e8d9ea6d38920316"
 
-cordova-plugin-ionic-webview@^2.0.0:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-2.1.4.tgz#e0c87297157537343b31fa1b79fab658635ff76e"
+cordova-plugin-ionic-webview@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-2.2.2.tgz#e32078f80dc970138508a88dfc6be245ceebf5b9"
 
 cordova-plugin-splashscreen@^5.0.0:
   version "5.0.0"
